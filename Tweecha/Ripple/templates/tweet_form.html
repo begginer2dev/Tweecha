@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+
+{% block title %}
+    Home - Chai Tweet
+{% endblock title %}
+
+{% block content %}
+<h1 class="text-centre text-white">Welcome to chai tweet</h1>
+<h2>
+  {%if form.instance.pk %}
+  Edit Tweet 
+  {% else %}
+  Create Tweet
+  {% endif %}
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn btn-warning" type="submit" class="btn btn-primary">
+      {%if form.instance.pk %}
+      Update
+      {% else %}
+      Create
+      {% endif %}
+    </button>
+</h2>
+{% endblock content %}
